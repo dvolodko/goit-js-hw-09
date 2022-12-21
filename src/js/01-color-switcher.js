@@ -10,6 +10,7 @@ refs.startBtn.addEventListener('click', onStartBtnClick);
 refs.stopBtn.addEventListener('click', onStopBtnClick);
 
 function onStartBtnClick() {
+  bodyColorChanger();
   intervalId = setInterval(() => {
     bodyColorChanger();
   }, 1000);
