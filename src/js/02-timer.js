@@ -14,15 +14,13 @@ refs.startBtn.addEventListener('click', onStartBtnClick);
 
 refs.startBtn.disabled = true;
 
-let selectedDate = 0;
-
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    selectedDate = selectedDates[0];
+    const selectedDate = selectedDates[0];
     if (selectedDate > Date.now()) {
       refs.startBtn.disabled = false;
     } else {
@@ -32,13 +30,13 @@ const options = {
   },
 };
 
-flatpickr('#datetime-picker', options);
+const datePicker = flatpickr('#datetime-picker', options);
 
 function onStartBtnClick() {
   refs.startBtn.disabled = true;
   setInterval(() => {
     const currentTime = Date.now();
-    const deltaTime = selectedDate - currentTime;
+    const deltaTime = datePicker.selectedDates[0] - currentTime;
     if (deltaTime > 0) {
       const { days, hours, minutes, seconds } = convertMs(deltaTime);
       updateTimerFace(days, hours, minutes, seconds);
