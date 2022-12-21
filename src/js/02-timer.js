@@ -37,8 +37,8 @@ flatpickr('#datetime-picker', options);
 function onStartBtnClick() {
   refs.startBtn.disabled = true;
   setInterval(() => {
-    currentTime = Date.now();
-    deltaTime = selectedDate - currentTime;
+    const currentTime = Date.now();
+    const deltaTime = selectedDate - currentTime;
     if (deltaTime > 0) {
       const { days, hours, minutes, seconds } = convertMs(deltaTime);
       updateTimerFace(days, hours, minutes, seconds);
